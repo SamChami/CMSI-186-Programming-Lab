@@ -8,8 +8,9 @@ class ClockSolver2 {
 			if (angle <= 0 || angle >= 360) {
 				System.err.println("Angle must be between 0 and 360.");
 			}
-			if (slice < 0) {
-				System.err.println("Slice must be positive.");
+			if (slice < 0 || slice >= 1800) {
+				System.err.println("Slice must be positive and below 1800.");
+				angle = 0;
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.err.println("No Arguments given");

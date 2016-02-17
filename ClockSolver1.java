@@ -3,8 +3,8 @@ class ClockSolver1 {
 		double slice = 60;
 		try {
 			slice = Double.parseDouble(args[0]);
-			if (slice < 0) {
-				System.err.println("Slice must be positive.");
+			if (slice < 0 || slice >= 1800) {
+				System.err.println("Slice must be positive and below 1800.");
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.err.println("No Arguments given");
