@@ -66,26 +66,25 @@ public class GeneralizedChangemaker {
     		tuples[i][0] = new Tuple(numOfDenoms);  
     	}
 
-        int previousTotal = 0;
 		for (int row = 0; row < numOfDenoms; row++) {
 			for (int col = 1; col < amount + 1; col++) {
-                tuples[row][col] = new Tuple(numOfDenoms);      
-                if (col >= denominations[row]) {
-                    tuples[row][col].setElement(row, 1); 
-                    if (tuples[row][col - denominations[row]].isImpossible()) {
-                            tuples[row][col] = Tuple.IMPOSSIBLE;
-                    } else {
-                        tuples[row][col] = tuples[row][col].add(tuples[row][col - denominations[row]]);
-                    }
-                } else {
-                    tuples[row][col] = Tuple.IMPOSSIBLE;
-                }
-            if (row != 0) {
-                if ((tuples[row][col].total() > tuples[row - 1][col].total() && tuples[row - 1][col].total() != 0) || (tuples[row][col].total() == 0 || tuples[row][col].isImpossible())) {
-                    tuples[row][col] = tuples[row - 1][col];
-                }
-            }
-        }   
+	        tuples[row][col] = new Tuple(numOfDenoms);      
+	        if (col >= denominations[row]) {
+	            tuples[row][col].setElement(row, 1); 
+	            if (tuples[row][col - denominations[row]].isImpossible()) {
+	                    tuples[row][col] = Tuple.IMPOSSIBLE;
+	            } else {
+	                tuples[row][col] = tuples[row][col].add(tuples[row][col - denominations[row]]);
+	            }
+	        } else {
+	            tuples[row][col] = Tuple.IMPOSSIBLE;
+	        }
+	    if (row != 0) {
+	        if ((tuples[row][col].total() > tuples[row - 1][col].total() && tuples[row - 1][col].total() != 0) || (tuples[row][col].total() == 0 || tuples[row][col].isImpossible())) {
+	            tuples[row][col] = tuples[row - 1][col];
+	        }
+	    }
+	}   
     }
     return tuples[numOfDenoms - 1][amount];
 }
