@@ -66,14 +66,13 @@ public class GeneralizedChangemaker {
     		tuples[i][0] = new Tuple(numOfDenoms);  
     	}
 
-        int previousTotal = 0;
-		for (int row = 0; row < numOfDenoms; row++) {
-			for (int col = 1; col < amount + 1; col++) {
+        for (int row = 0; row < numOfDenoms; row++) {
+            for (int col = 1; col < amount + 1; col++) {
                 tuples[row][col] = new Tuple(numOfDenoms);      
                 if (col >= denominations[row]) {
                     tuples[row][col].setElement(row, 1); 
                     if (tuples[row][col - denominations[row]].isImpossible()) {
-                            tuples[row][col] = Tuple.IMPOSSIBLE;
+                        tuples[row][col] = Tuple.IMPOSSIBLE;
                     } else {
                         tuples[row][col] = tuples[row][col].add(tuples[row][col - denominations[row]]);
                     }
