@@ -28,22 +28,22 @@ public class DateDistance {
 			} else {
 				totalDays1 += 366;
 			}
-		} 	
+		}
 
 		for (long i = 0; i < month0; i++) {
-			totalDays0 += monthLength(i, year0);	
+			totalDays0 += monthLength(i, year0);
 			}
 		for (long i = 0; i < month1; i++) {
-			totalDays1 += monthLength(i, year1);	
+			totalDays1 += monthLength(i, year1);
 			}
 
 		return Math.abs(totalDays0 - totalDays1);
 	}
 
 	public static boolean isRealDate(long month, long day, long year) {
-		return (month <= 12 && month >= 0 && year > 0 && day <= monthLength(month, year) && day > 0); 
+		return (month <= 12 && month >= 0 && year > 0 && day <= monthLength(month, year) && day > 0);
 	}
-			
+
 	public static long monthLength ( long month, long year ) {
 		long length =0;
 	    if (month == 2 && isCommonYear(year)) {
